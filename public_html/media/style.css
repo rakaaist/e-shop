@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,100&display=swap');
+
+* {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background-color: #383b40;
+    margin: 0;
+    padding: 20px;
+    /*position: fixed;*/
+    top: 0;
+    width: 100vw;
+}
+
+ul {
+    display: flex;
+    margin: 0;
+    justify-content: flex-end;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 3px;
+    margin-left: 20px;
+}
+
+main, nav {
+    width: 80%;
+    margin: 0 auto;
+}
+
+main {
+    padding: 70px 0 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 50px auto 0;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: silver;
+}
+
+input, textarea {
+    width: 250px;
+    padding: 5px;
+    margin: 10px auto 0;
+    text-align: left;
+}
+
+button {
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px 5px;
+}
+
+input, button, textarea {
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #383b40;
+}
+
+label {
+    margin: 10px 0;
+}
+
+.size {
+    height: 100px;
+    width: 100px;
+}
+
+body {
+    background-color: silver;
+    min-height: 100vh;
+}
+
+.items-portfolio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding-top: 20px;
+}
+
+.item-card {
+    max-width: 30vw;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.item-img {
+    width: 100%;
+}
+
+.register-background {
+    background-image: url('https://lh3.googleusercontent.com/t5nl0FU6oo3MfzKpzz2iV7xMXMBKBSqJHl9gZphLi4e8VU9qKJFgOUy-w5TAz-bKSX7VY4W0jjQNitxeJjyc3h8697piiIQ97AJf4Kb0irlrPX6Ynoiw4VBqREU8VA3dBmyo8XwPYhl67wprdBt-ZlwpOP9ICm5mVrHb7JAEA5eiS0DjzyzdhRnm_PIq3VcgyvC19vO03fxTXpA5ZeH1IH2g3pTgK3hD6KnRwzoxiqmO-TjMNgJOpgLbyKGqMs0wfTv6td5aJaP1UspN_HFnEbqenRMmwebuxmpBTM8p6-s4ybdIcs42EtTzNAPfVs7WXVG1-P46SUsMvw1r-apm6SSiTz2L6RT3D_hFaoOWXNomu16dkTvKrsI8WJuwnwevuMWkZQ_UaYNnn1M0_c6OlwUhF9CMXux-TOBhsX4a0_fwnsjVFbCk12YQNWU7zO8lAbHudWtbSRaiMPN_aGzgdlc7jjky7SiP5mNsOdmZSGzNVWnOFKULBl8yzSvvHFkztBexZIEfvmvWk5TljtYN_9XldAeDjIp8-R1ue4tuhgOhyhUohL84Lxo-2L2fw8fWfRTq6bpztwmCa_nD58uTQKXyTFt0qE65IJZZC3KIMJwslxPVTDVMOHtc17yXsh-QiutKy57ozoPYcqtjKEQaw1reeP8WDNMUpSsnstFvND5ircUa-rUDdxazp37_fA=w1302-h868-no?authuser=2');
+}
+
+.login-background {
+    background-image: url('https://lh3.googleusercontent.com/jmMnE_TsTzRLzkpZKKv8RKp8ATrVj3v2niUQJ7gm-3sqa-4vtMKCU6FL9NXquFLfG31QOZBWg-IUQ7Ugv71K8YNSQv7Ytl513b3psXU2kPuCj1LYDumA1gOxhcvgw5E0Q3TCNSdZ3w1w3hPX7FMsLtCEVzAT6k6ENahvFKJieiBARVBWFa5LWMOqSo5iuaV4p9zSt8vUY1Ljd4xhBMrgSmqElL8FulIX7FLt9yc5-sRl_kdcRWInNdaL9GKPUqJFJ-e_qibf85NaJ3vpsKHq8-yYT4i2XLHKxYTAxQjtGXpvRn24lOIfXWOnCZe2F_o1NT824gg3MnRVnjJv_FQ8qUENyNI8Kzk-guLrUXnjlM0Gozrum96tClhTHHecsQqC56IJHemQAM59xWlBrexWl5UZczwY2Lf5aRl1t3AzZ3YoVoE8HyKJpGlmLTyEfaCsEph0kHwPBKgfyAod_tH39RCfQslQkL9GXJGg2ddESc31JeB7Wwnxsz6SKLveir17FwfrVFB6aDxIe8hbYFNfHZf8waleEXEpQgjWEsDNbuPTlka9HXPsscdf2lSEYZ7-5cZrHetzDmooOp4qrnsB5cmPk97dp-b5VrICF9ghBM1nP9R2oUihTufadWvK3NWVz5_WLSQEBOskdvtCU54Eo5Khv_Akkh7iG6u6JlNMp7M4-pKG1pAG0FZrjBCSDg=w1302-h868-no?authuser=2');
+}
+
+.add-background {
+    background-image: url('https://lh3.googleusercontent.com/ERnzK-2vXtePLFwTh4V4tDz4cCBitdVttfIaoFfol5kedeSFkttJFx9kbRxs7f0zE94XpibQq4Dzce4TxAJFu6VhOnVLCT7sVhvWOiLofaxOt2F3AbinqI5C8JUT2jw5vMvsj3kKaXItUp1Z9fKvQT7cAqKoXx3yla8fn6YPtvPj_9DfT4TE6GoyFVMcrbppCfZBoGm1IKONQEgCbfpr4QQ0bUGNetDse473GHP-W7Zm8mxiXIhxuRFxKovuvcnsOoAt9m0pqDemUa9D_jmR1kdzv7mG4jYLSC11FUpGjxKF3zi2FlSEBcMRvDpTx1DYgZLgkmjYVg61MXSCgKtjQqG6MhC9f04mVQfzLJYtjlfDTuGVwwRt0jNPAsyqshBxUhgTG8RXkTMeFWdbpiJy7o5eKG4xPNceUIukoDMukuq4-g1QgRxCdx0zxdVoaoOXBFqN3QpN0CENRKUGn7Kkbr3eG-hs13XKdTwnaws1p_YolU6Yiwnro33Mojf-DlMfqPwGUtyRx9K2T4QOwoJISJ7VvFK-LKt83vA6cFChqkXCRSD9TTevLFYAW9_r7hoL39GICtSnCB8qA8nq8NmNwgqz2wTh166Ba9ff9iKjtMAckkjpuDpvWMi-QMBEp92vpy6J9yN5nQdLGDhS5nOk_7TgyCi3Y9ekvXgkQFJweH20nww6QpEmYxOZpZ-O_g=w1302-h868-no?authuser=2');
+}
+
+.register-background, .login-background, .add-background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+}
+
