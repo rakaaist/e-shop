@@ -13,25 +13,36 @@ $form = [
         'method' => 'POST'
     ],
     'fields' => [
+        'username' => [
+            'label' => 'Username',
+            'type' => 'text',
+            'validators' => [
+                'validate_field_not_empty',
+                'validate_user_unique',
+                'validate_username_letter_number'
+            ]
+        ],
         'email' => [
             'label' => 'Email',
             'type' => 'email',
             'validators' => [
-                'validate_field_not_empty'
+                'validate_field_not_empty',
+                'validate_email'
             ]
         ],
         'password' => [
             'label' => 'Password',
             'type' => 'password',
             'validators' => [
-                'validate_field_not_empty'
+                'validate_field_not_empty',
+                'validate_password_min_length'
             ]
         ],
         'password_repeat' => [
             'label' => 'Repeat password',
             'type' => 'password',
             'validators' => [
-                'validate_field_not_empty'
+                'validate_field_not_empty',
             ]
         ],
     ],
@@ -62,8 +73,9 @@ if ($clean_inputs) {
 
             $message = 'Successful registration!';
             unset($clean_inputs['password_repeat']);
+            $clean_inputs['items'] = 0;
             $data = file_to_array(ROOT . '/app/data/db.json');
-            $data[] = $clean_inputs;
+            $data['users'][] = $clean_inputs;
             $json = array_to_file($data, ROOT . '/app/data/db.json');
             header("location: /login.php");
         }

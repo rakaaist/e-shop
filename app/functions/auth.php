@@ -6,16 +6,18 @@
  *
  * @return bool
  */
-function is_logged_in(): bool {
-
+function is_logged_in(): bool
+{
     if ($_SESSION) {
         $db_data = file_to_array(DB_FILE);
 
-        foreach ($db_data as $user) {
-            if (($user['email'] === $_SESSION['email'])
-                && ($user['password'] === $_SESSION['password'])) {
+        if (isset($db_data['users'])) {
+            foreach ($db_data['users'] as $user) {
+                if (($user['email'] === $_SESSION['email'])
+                    && ($user['password'] === $_SESSION['password'])) {
 
-                return true;
+                    return true;
+                }
             }
         }
     }
@@ -28,7 +30,8 @@ function is_logged_in(): bool {
  *
  * @param null $redirected
  */
-function logout($redirected = null): void {
+function logout($redirected = null): void
+{
     $_SESSION = [];
     session_destroy();
 

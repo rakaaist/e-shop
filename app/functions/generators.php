@@ -8,7 +8,10 @@ function nav()
             'Home' => [
                 'link' => '../index.php'
             ],
-            'Add' => [
+            'My stuff' => [
+                'link' => '../admin/my.php'
+            ],
+            'Add stuff' => [
                 'link' => '../admin/add.php'
             ],
             'Logout' => [

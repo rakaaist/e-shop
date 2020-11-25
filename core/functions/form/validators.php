@@ -13,7 +13,7 @@
  */
 function validate_field_not_empty(string $field_value, array &$field): bool{
     if ($field_value === '') {
-        $field['error'] = 'empty input';
+        $field['error'] = 'Required field!';
         return false;
     }
 
@@ -152,4 +152,5 @@ function validate_email($field_input, &$field){
 
     return true;
 }
+
 

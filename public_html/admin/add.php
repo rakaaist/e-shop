@@ -14,7 +14,7 @@ $form = [
     ],
     'fields' => [
         'title' => [
-            'label' => 'Type of accessory',
+            'label' => '',
             'type' => 'text',
             'validators' => [
                 'validate_field_not_empty'
@@ -26,45 +26,46 @@ $form = [
             ]
         ],
         'link' => [
-            'label' => 'URL',
+            'label' => '',
             'type' => 'text',
             'validators' => [
                 'validate_field_not_empty'
             ],
             'extra' => [
                 'attr' => [
-                    'placeholder' => 'Type image url...'
-                ]
-            ]
-        ],
-        'description' => [
-            'type' => 'textarea',
-            'label' => 'Description',
-            'validators' => [
-                'validate_field_not_empty'
-            ],
-            'extra' => [
-                'attr' => [
-                    'placeholder' => 'Type something'
+                    'placeholder' => 'Image link'
                 ]
             ]
         ],
         'price' => [
-            'type' => 'number',
-            'label' => 'Price',
+            'type' => 'text',
+            'label' => '',
             'validators' => [
-                'validate_field_not_empty'
+                'validate_field_not_empty',
+                'validate_numeric_value'
             ],
             'extra' => [
                 'attr' => [
                     'placeholder' => 'Price'
                 ]
             ]
-        ]
+        ],
+        'contacts' => [
+            'type' => 'text',
+            'label' => '',
+            'validators' => [
+                'validate_field_not_empty'
+            ],
+            'extra' => [
+                'attr' => [
+                    'placeholder' => 'Contacts (phone/ email/ skype)'
+                ]
+            ]
+        ],
     ],
     'buttons' => [
         'submit' => [
-            'title' => 'Upload',
+            'title' => 'Sell my accessories!',
             'type' => 'submit',
         ]
     ]
@@ -75,12 +76,19 @@ $clean_inputs = get_clean_input($form);
 if ($clean_inputs) {
 
     if (validate_form($form, $clean_inputs)) {
+        $data = file_to_array(DB_FILE);
 
-        $message = 'Successful upload!';
-        $data = file_to_array(ITEM_FILE);
-        $data[] = $clean_inputs;
-        $json = array_to_file($data, ITEM_FILE);
-        header("location: /index.php");
+        foreach ($data['users'] as &$user) {
+            if ($user['email'] === $_SESSION['email']) {
+                $user['items']++;
+                $clean_inputs['email'] = $user['email'];
+                $data['items'][] = $clean_inputs;
+            }
+        }
+
+        $json = array_to_file($data, DB_FILE);
+
+        header("location: /admin/my.php");
     } else {
         $message = 'Something went wrong';
     }
@@ -94,8 +102,8 @@ if ($clean_inputs) {
     <title>Forms</title>
     <link rel="stylesheet" href="../media/style.css">
 </head>
-<?php require ROOT . '/app/templates/nav.php'; ?>
 <body class="add-background">
+<?php require ROOT . '/app/templates/nav.php'; ?>
 <main>
     <?php require ROOT . '/core/templates/form.tpl.php'; ?>
     <?php if (isset($message)): ?>

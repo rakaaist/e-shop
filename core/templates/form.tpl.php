@@ -16,7 +16,7 @@
                 <input <?php print input_attr($field_id, $field); ?>>
             <?php endif; ?>
             <?php if (isset($field['error'])): ?>
-                <p><?php print $field['error']; ?></p>
+                <p class="error"><?php print $field['error']; ?></p>
             <?php endif; ?>
         </label>
     <?php endforeach; ?>

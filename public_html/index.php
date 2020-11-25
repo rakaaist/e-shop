@@ -9,7 +9,19 @@ if (is_logged_in()) {
 }
 
 $nav = nav();
-$items = file_to_array(ITEM_FILE);
+$data = file_to_array(DB_FILE);
+
+if (isset($data['items'])) {
+    $items_count = count($data['items']);
+} else {
+    $items_count = 0;
+}
+
+if ($items_count) {
+    $h2 = "$items_count accessories are on sale!";
+} else {
+    $h2 = "No accessories are available at the moment";
+}
 
 ?>
 <!doctype html>
@@ -23,17 +35,18 @@ $items = file_to_array(ITEM_FILE);
 <body>
 <main>
     <h1><?php print $h1; ?></h1>
+    <h2><?php print $h2; ?></h2>
     <section class="items-portfolio">
-        <?php foreach ($items as $item): ?>
-            <div class="item-card">
-                <h2><?php print $item['title']; ?></h2>
-                <div>
+        <?php if (isset($data['items'])): ?>
+            <?php foreach ($data['items'] as $item): ?>
+                <div class="item-card">
+                    <h2><?php print $item['title']; ?></h2>
                     <img class="item-img" src="<?php print $item['link']; ?>">
+                    <p><?php print $item['price']; ?> Eur.</p>
+                    <p><?php print $item['contacts']; ?></p>
                 </div>
-                <p><?php print $item['description']; ?></p>
-                <p><?php print $item['price']; ?> Eur.</p>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </section>
 </main>
 </body>
