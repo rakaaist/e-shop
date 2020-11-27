@@ -13,13 +13,20 @@ $form = [
         'method' => 'POST'
     ],
     'fields' => [
-        'username' => [
-            'label' => 'Username',
+        'name' => [
+            'label' => 'Name',
             'type' => 'text',
             'validators' => [
                 'validate_field_not_empty',
-                'validate_user_unique',
-                'validate_username_letter_number'
+                'validate_letters_only'
+            ]
+        ],
+        'surname' => [
+            'label' => 'Surname',
+            'type' => 'text',
+            'validators' => [
+                'validate_field_not_empty',
+                'validate_letters_only'
             ]
         ],
         'email' => [
@@ -30,12 +37,28 @@ $form = [
                 'validate_email'
             ]
         ],
+        'address' => [
+            'label' => 'Address',
+            'type' => 'text',
+            'validators' => [
+                'validate_field_not_empty'
+            ]
+        ],
+        'phone' => [
+            'label' => 'Phone number',
+            'type' => 'text',
+            'validators' => [
+                'validate_field_not_empty',
+                'validate_numeric_value'
+            ]
+        ],
         'password' => [
             'label' => 'Password',
             'type' => 'password',
             'validators' => [
                 'validate_field_not_empty',
-                'validate_password_min_length'
+                'validate_password_length',
+                'validate_password_format'
             ]
         ],
         'password_repeat' => [
@@ -80,7 +103,7 @@ if ($clean_inputs) {
             header("location: /login.php");
         }
     } else {
-        $message = 'Eik nx';
+        $message = 'Something went wrong!';
     }
 }
 

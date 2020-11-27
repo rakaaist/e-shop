@@ -4,6 +4,7 @@ require '../../bootloader.php';
 
 $nav = nav();
 $data = file_to_array(DB_FILE);
+$items = $data['items'] ?? [];
 $h1 = 'My accessories!';
 
 foreach ($data['users'] as $user) {
@@ -26,8 +27,7 @@ foreach ($data['users'] as $user) {
     <h1><?php print $h1; ?></h1>
     <h2><?php print $h2; ?></h2>
     <section class="items-portfolio">
-        <?php if (isset($data['items'])): ?>
-            <?php foreach ($data['items'] as $item): ?>
+            <?php foreach ($items as $item): ?>
                 <?php if ($item['email'] === $_SESSION['email']): ?>
                     <div class="item-card">
                         <h2><?php print $item['title']; ?></h2>
@@ -37,7 +37,6 @@ foreach ($data['users'] as $user) {
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
-        <?php endif; ?>
     </section>
 </main>
 </body>

@@ -49,20 +49,32 @@ function validate_login($filtered_input, &$form)
 }
 
 /**
- * Function validates password min symbols
+ * Function validates password length
  *
  * @param $field_value
  * @param $field
  * @return bool
  */
-function validate_password_min_length($field_value, &$field)
+function validate_password_length($field_value, &$field)
 {
-    if (strlen($field_value) >= 6) {
-        return true;
-    } else {
-        $field['error'] = 'Password is too short!';
+    if (strlen($field_value) > 4) {
+        $field['error'] = 'Password is too long!';
+
         return false;
     }
+
+    return true;
+}
+
+function validate_password_format($field_value, &$field) {
+    for($i = 0; $i < strlen($field_value); $i++) {
+        if (is_numeric($field_value[$i])) {
+            return true;
+        }
+    }
+    $field['error'] = 'Must contain at least one number!';
+
+    return true;
 }
 
 /**
@@ -82,6 +94,13 @@ function validate_username_letter_number($field_value, &$field)
     }
 }
 
+/**
+ * Function validates just numeric values
+ *
+ * @param $field_value
+ * @param $field
+ * @return bool
+ */
 function validate_numeric_value($field_value, &$field)
 {
     if (!is_numeric($field_value)) {
@@ -92,5 +111,26 @@ function validate_numeric_value($field_value, &$field)
 
     return true;
 }
+
+/**
+ * Function validates only alphabetic values in a string;
+ *
+ * @param $field_value
+ * @param $field
+ * @return bool
+ */
+function validate_letters_only($field_value, &$field)
+{
+    for($i = 0; $i < strlen($field_value); $i++) {
+        if (is_numeric($field_value[$i])) {
+            $field['error'] = 'Must contain just letters!';
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
 
 

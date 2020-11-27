@@ -82,6 +82,7 @@ if ($clean_inputs) {
             if ($user['email'] === $_SESSION['email']) {
                 $user['items']++;
                 $clean_inputs['email'] = $user['email'];
+                $clean_inputs['id'] = uniqid();
                 $data['items'][] = $clean_inputs;
             }
         }
