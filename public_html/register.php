@@ -97,6 +97,7 @@ if ($clean_inputs) {
             $message = 'Successful registration!';
             unset($clean_inputs['password_repeat']);
             $clean_inputs['items'] = 0;
+            $clean_inputs['reserved_items'] = [];
             $data = file_to_array(ROOT . '/app/data/db.json');
             $data['users'][] = $clean_inputs;
             $json = array_to_file($data, ROOT . '/app/data/db.json');

@@ -14,6 +14,9 @@ function nav()
             'Add stuff' => [
                 'link' => '../admin/add.php'
             ],
+            'Cart' => [
+                'link' => '../admin/cart.php'
+            ],
             'Logout' => [
                 'link' => '../logout.php'
             ]

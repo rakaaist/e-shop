@@ -49,13 +49,15 @@ if ($items_count) {
                 <h2><?php print $item['title']; ?></h2>
                 <img class="item-img" src="<?php print $item['link']; ?>">
                 <p><?php print $item['price']; ?> Eur.</p>
-                <?php if (is_logged_in()): ?>
-                    <form method="post" action="pvm.php">
-                        <input type="hidden" value="<?php print $item['id'] ?>" name="product_id">
-                        <button type="submit">Buy this!</button>
-                    </form>
-                <?php else: ?>
-                    <button><a href="login.php">Buy this!</a></button>
+                <?php if (!$item['reserved']): ?>
+                    <?php if (is_logged_in()): ?>
+                        <form method="post" action="admin/cart.php">
+                            <input type="hidden" value="<?php print $item['id'] ?>" name="product_id">
+                            <button type="submit">Buy this!</button>
+                        </form>
+                    <?php else: ?>
+                        <button><a href="login.php">Buy this!</a></button>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

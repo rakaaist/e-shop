@@ -83,6 +83,7 @@ if ($clean_inputs) {
                 $user['items']++;
                 $clean_inputs['email'] = $user['email'];
                 $clean_inputs['id'] = uniqid();
+                $clean_inputs['reserved'] = false;
                 $data['items'][] = $clean_inputs;
             }
         }
